@@ -3,27 +3,31 @@ import { loadNews } from "../../api/news";
 
 export const News = () => {
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [News, setNews] = useState([]);
-  useEffect(() => {
-    loadNews().then(
-      (res) => {
-        setIsLoaded(true);
-        setNews(res);
-      },
-      (error) => {
-        setIsLoaded(true);
-        setError(error);
-      }
-    );
+  const [isLoading, setIsLoading] = useState(false);
+  const [news, setNews] = useState([]);
+
+  useEffect(async () => {
+    setIsLoading(true);
+    try {
+      const n = await loadNews();
+      setNews(n);
+    } catch (err) {
+      setError(err);
+    }
+    setIsLoading(false);
   }, []);
+
   if (error) {
-    console.log("error");
-  } else if (!isLoaded) {
+    console.log("error", error);
+  } else if (isLoading) {
     console.log("Loading");
   } else {
-    console.log(News);
+    console.log(news);
   }
 
-  return <div></div>;
+  return isLoading ? (
+    <div>
+      <span>Loading...</span>
+    </div>
+  ) : null;
 };
