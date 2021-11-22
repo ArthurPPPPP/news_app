@@ -29,6 +29,4 @@ const News = () => {
 };
 export default News;
 
-/*/
-for git
-/*/
+
