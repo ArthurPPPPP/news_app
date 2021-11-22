@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { loadNews } from "../../api/news";
 
-const News = () => {
+export const News = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [News, setNews] = useState([]);
@@ -27,4 +27,3 @@ const News = () => {
 
   return <div></div>;
 };
-export default News;

@@ -1,6 +1,6 @@
 import React from "react";
+import { News } from "./pages/News";
 
-import News from "./pages/News/News";
 function App() {
   return (
     <div className="App">
