@@ -7,33 +7,22 @@ export const News = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [news, setNews] = useState([]);
 
+  const getNews = async () => {
+    setIsLoading(true);
+    try {
+      const n = await loadNews();
+      setNews(n);
+    } catch (err) {
+      setError(err);
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    (async function () {
-      setIsLoading(true);
-      try {
-        const n = await loadNews();
-        setNews(n);
-      } catch (err) {
-        setError(err);
-      }
-      setIsLoading(false);
-      if (error) {
-        console.log("error", error);
-      } else if (isLoading) {
-        console.log("Loading");
-      } else {
-        console.log(news);
-      }
-    })();
+    getNews();
   }, []);
 
-  if (error) {
-    console.log("error", error);
-  } else if (isLoading) {
-    console.log("Loading");
-  } else {
-    console.log(news);
-  }
+  console.log(news);
 
   return isLoading ? <Loader /> : null;
 };
