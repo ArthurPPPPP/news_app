@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { loadNews } from "../../api/news";
+import { Loader } from "../../components/Loader";
 
 export const News = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [news, setNews] = useState([]);
 
-  useEffect(async () => {
+  const getNews = async () => {
     setIsLoading(true);
     try {
       const n = await loadNews();
@@ -15,19 +16,13 @@ export const News = () => {
       setError(err);
     }
     setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getNews();
   }, []);
 
-  if (error) {
-    console.log("error", error);
-  } else if (isLoading) {
-    console.log("Loading");
-  } else {
-    console.log(news);
-  }
+  console.log(news);
 
-  return isLoading ? (
-    <div>
-      <span>Loading...</span>
-    </div>
-  ) : null;
+  return isLoading ? <Loader /> : null;
 };
