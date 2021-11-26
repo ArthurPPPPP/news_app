@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { loadNews } from "../../api/news";
 import { Loader } from "../../components/Loader";
+import { NewsList } from "../../components/NewsList";
 
 export const News = () => {
   const [error, setError] = useState(null);
@@ -22,7 +23,17 @@ export const News = () => {
     getNews();
   }, []);
 
-  console.log(news);
-
-  return isLoading ? <Loader /> : null;
+  return (
+    <div className="news-container">
+      {isLoading ? <Loader /> : <NewsList news={news} />}
+    </div>
+  );
 };
+/*/
+bodyText
+byline
+firstPublicationDate
+headline
+thumbnail
+pillarName
+/*/
