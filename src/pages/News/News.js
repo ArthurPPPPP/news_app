@@ -29,11 +29,3 @@ export const News = () => {
     </div>
   );
 };
-/*/
-bodyText
-byline
-firstPublicationDate
-headline
-thumbnail
-pillarName
-/*/

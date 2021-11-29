@@ -1,18 +1,18 @@
 import React from "react";
-import { useEffect } from "react/cjs/react.development";
+import "./styles.scss";
 
-export const NewsListItem = (props, index) => {
+export const NewsListItem = (props) => {
   return (
-    <li>
-      <div>
-        <img src={props.img} />
+    <li className="list-item">
+      <div className="list-item-img">
+        <img src={props.item.fields.thumbnail} />
       </div>
-      <div>
-        <h2></h2>
-        <p>{props.title}</p>
-        <span>{props.date}</span>
-        <div>
-          <button>read more</button>
+      <div className="list-item-txt">
+        <p>{props.item.fields.headline}</p>
+
+        <div className="list-item-btn">
+          <span>{props.item.fields.firstPublicationDate}</span>
+          <button>Read more</button>
         </div>
       </div>
     </li>
