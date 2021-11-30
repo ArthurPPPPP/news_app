@@ -1,0 +1,28 @@
+.list-item {
+  border: solid 1px black;
+  display: grid;
+  justify-items: center;
+  grid-template-areas:
+    "itemImage "
+    "txt"
+    " btn";
+}
+.list-item-img img {
+  grid-area: itemImage;
+  width: 390px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.list-item p {
+  grid-area: txt;
+  width: 100%;
+  height: 60px;
+}
+
+.list-item-btn {
+  display: flex;
+  justify-content: space-between;
+  grid-area: btn;
+  width: 100%;
+}
